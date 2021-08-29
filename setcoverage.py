@@ -54,12 +54,17 @@ class SetCoverage:
             point = set_column[i]
             if point == 1:
                 self.covered_points[i] = 1
+    
+    def printArray(self, arr):
+        for item in arr:
+            print( ('%f' % round(item, 7)).rstrip('0').rstrip('.'), end=" ")
+        print()
 
     def run(self):
         next_point, all_covered = self.next_uncovered_point()
         if all_covered:
-            print(self.used_sets)
-            print(self.points_values)
+            self.printArray(self.used_sets)
+            self.printArray(self.points_values)
             return
         
         value, set = self.get_point_value_and_set(next_point)
